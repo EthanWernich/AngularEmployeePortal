@@ -352,6 +352,15 @@
           }
         }
       },
+      "MySql.Data/6.7.9": {
+        "type": "package",
+        "compile": {
+          "lib/net45/MySql.Data.dll": {}
+        },
+        "runtime": {
+          "lib/net45/MySql.Data.dll": {}
+        }
+      },
       "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
@@ -1979,6 +1988,25 @@
         "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.xml",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "MySql.Data/6.7.9": {
+      "sha512": "78rw8r8y0NggN60BM0+FiG8zzU1CsEEiWEAjkEY347qQ2jAu7Cqi0oW/g7MLaEsmYI94Cuho+V7Ogym6wDc0Xw==",
+      "type": "package",
+      "path": "mysql.data/6.7.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "CHANGES",
+        "Readme.txt",
+        "content/app.config.transform",
+        "content/web.config.transform",
+        "lib/net20-cf/MySql.Data.CF.dll",
+        "lib/net20/MySql.Data.dll",
+        "lib/net40/MySql.Data.dll",
+        "lib/net45/MySql.Data.dll",
+        "mysql.data.6.7.9.nupkg.sha512",
+        "mysql.data.nuspec"
       ]
     },
     "Newtonsoft.Json/12.0.2": {
@@ -5335,6 +5363,7 @@
       "Microsoft.EntityFrameworkCore >= 5.0.17",
       "Microsoft.EntityFrameworkCore.Relational >= 3.1.28",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.28",
+      "MySql.Data >= 6.7.9",
       "System.Data.SqlClient >= 4.8.3"
     ]
   },
@@ -5400,6 +5429,10 @@
             "target": "Package",
             "version": "[3.1.28, )"
           },
+          "MySql.Data": {
+            "target": "Package",
+            "version": "[6.7.9, )"
+          },
           "System.Data.SqlClient": {
             "target": "Package",
             "version": "[4.8.3, )"
@@ -5426,5 +5459,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.410\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'MySql.Data 6.7.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "MySql.Data",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

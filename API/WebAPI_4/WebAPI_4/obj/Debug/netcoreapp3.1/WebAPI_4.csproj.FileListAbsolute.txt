@@ -93,3 +93,4 @@ C:\Dev\EmployeeSystem\API\WebAPI_4\WebAPI_4\obj\Debug\netcoreapp3.1\WebAPI_4.csp
 C:\Dev\EmployeeSystem\API\WebAPI_4\WebAPI_4\obj\Debug\netcoreapp3.1\WebAPI_4.dll
 C:\Dev\EmployeeSystem\API\WebAPI_4\WebAPI_4\obj\Debug\netcoreapp3.1\WebAPI_4.pdb
 C:\Dev\EmployeeSystem\API\WebAPI_4\WebAPI_4\obj\Debug\netcoreapp3.1\WebAPI_4.genruntimeconfig.cache
+C:\Dev\EmployeeSystem\API\WebAPI_4\WebAPI_4\bin\Debug\netcoreapp3.1\MySql.Data.dll

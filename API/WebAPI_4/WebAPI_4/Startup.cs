@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -12,6 +13,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI_4.DataAccess;
 
 namespace WebAPI_4
 {
@@ -42,6 +44,7 @@ namespace WebAPI_4
                 = new DefaultContractResolver()
 
                 );
+            services.AddDbContext<dbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EmployeeAppCon")));
 
             services.AddControllers();
 

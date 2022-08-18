@@ -8,7 +8,7 @@ using WebAPI_4.DataAccess;
 
 namespace EFDataAccessLibrary.Migrations
 {
-    [DbContext(typeof(Context)), Migration("AddedValidation")]
+    [DbContext(typeof(dbContext)), Migration("AddedValidation")]
     internal class AddedValidationBase
     {
         public  void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,7 +56,7 @@ namespace EFDataAccessLibrary.Migrations
         }
     }
 
-    [DbContext(typeof(Context))]
+    [DbContext(typeof(dbContext))]
     [Migration("20220810052352_AddedValidation")]
     partial class AddedValidation : AddedValidationBase
     {
