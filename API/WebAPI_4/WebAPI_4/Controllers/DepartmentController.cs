@@ -15,11 +15,11 @@ namespace WebAPI_4.Controllers
     [ApiController]
     public class DepartmentController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
+        private readonly DataContext _context;
 
-        public DepartmentController(IConfiguration configuration)
+        public InspectionTypesController(DataContext context)
         {
-            _configuration = configuration;
+            _context = context;
         }
 
         [HttpGet]
@@ -70,7 +70,7 @@ namespace WebAPI_4.Controllers
             return new JsonResult("Added Successfully");
         }
 
-
+           
         [HttpPut]
         public JsonResult Put(Department dep)
         {
