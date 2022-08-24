@@ -10,7 +10,6 @@ export class AddEditEmpComponent implements OnInit {
   constructor(private service: SharedService) {}
 
   @Input() emp: any;
-  EmployeeId: string;
   EmployeeName: string;
   Department: string;
   DateOfJoining: string;
@@ -24,10 +23,9 @@ export class AddEditEmpComponent implements OnInit {
   }
 
   loadDepartmentList() {
-    this.service.getAllDepartmentNames().subscribe((data: any) => {
+    this.service.getDepList().subscribe((data: any) => {
       this.DepartmentsList = data;
 
-      this.EmployeeId = this.emp.EmployeeId;
       this.EmployeeName = this.emp.EmployeeName;
       this.Department = this.emp.Department;
       this.DateOfJoining = this.emp.DateOfJoining;
@@ -38,7 +36,7 @@ export class AddEditEmpComponent implements OnInit {
 
   addEmployee() {
     var val = {
-      EmployeeId: this.EmployeeId,
+      Id: this.emp.Id,
       EmployeeName: this.EmployeeName,
       Department: this.Department,
       DateOfJoining: this.DateOfJoining,
@@ -52,14 +50,14 @@ export class AddEditEmpComponent implements OnInit {
 
   updateEmployee() {
     var val = {
-      EmployeeId: this.EmployeeId,
+      Id: this.emp.Id,
       EmployeeName: this.EmployeeName,
       Department: this.Department,
       DateOfJoining: this.DateOfJoining,
       PhotoFileName: this.PhotoFileName,
     };
 
-    this.service.updateEmployee(val).subscribe((res) => {
+    this.service.updateEmployee(val, this.emp.Id).subscribe((res) => {
       alert(res.toString());
     });
   }

@@ -40,7 +40,7 @@ export class ShowEmpComponent implements OnInit {
 
   deleteClick(item: any) {
     if (confirm('Are you sure??')) {
-      this.service.deleteEmployee(item.EmployeeId).subscribe((data) => {
+      this.service.deleteEmployee(item.Id).subscribe((data) => {
         alert(data.toString());
         this.refreshEmpList();
       });

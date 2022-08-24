@@ -8,7 +8,7 @@ import { SharedService } from 'src/app/shared.service';
   styleUrls: ['./add-edit.component.css'],
 })
 export class AddEditComponent implements OnInit {
-  public DepartmentId: string;
+  public DepartmentId: number;
   public DepartmentName: string;
   public loading: Subscription;
   constructor(private service: SharedService) {}
@@ -35,7 +35,7 @@ export class AddEditComponent implements OnInit {
       DepartmentId: this.DepartmentId,
       DepartmentName: this.DepartmentName,
     };
-    this.service.updateDepartment(val).subscribe((res) => {
+    this.service.updateDepartment(val, this.DepartmentId).subscribe((res) => {
       alert(res.toString());
     });
   }
