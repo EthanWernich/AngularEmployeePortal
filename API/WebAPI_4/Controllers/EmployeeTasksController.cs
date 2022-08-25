@@ -36,8 +36,6 @@ namespace WebAPI_4.Controllers
             return await _context.Tasks.ToListAsync();
         }
 
-
-
         /// <summary>
         /// Get all employeetasks by employeeId.
         /// </summary>
@@ -56,13 +54,13 @@ namespace WebAPI_4.Controllers
             return Tasks;
 
         }
+
         /// <summary>
         /// Update employeeTasks by employeeId.
         /// </summary>
         /// <param name="employeeId"></param>
         /// <param name="Tasks"></param>
         /// <returns></returns>
-
         [HttpPut("{employeeId}")]
         public async Task<IActionResult> Put(int employeeId, EmployeeTasks Tasks)
         {
@@ -95,8 +93,6 @@ namespace WebAPI_4.Controllers
         {
             throw new NotImplementedException();
         }
-
-
 
         /// <summary>
         /// Edit employeetasks by employeeId

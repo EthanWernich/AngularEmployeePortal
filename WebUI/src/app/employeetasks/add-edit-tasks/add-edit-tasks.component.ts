@@ -17,9 +17,11 @@ export class AddEditTasksComponent implements OnInit {
   Tasks: string;
 
   DepartmentList: any = [];
+  EmployeeList: any = [];
 
   ngOnInit(): void {
     this.loadDepartmentList();
+    this.loadEmployeeList();
   }
 
   loadDepartmentList() {
@@ -27,7 +29,15 @@ export class AddEditTasksComponent implements OnInit {
       this.DepartmentList = data;
 
       this.EmployeeName = this.task.EmployeeName;
-      this.EmployeeId = this.task.Department;
+      this.Department = this.task.Department;
+    });
+  }
+  loadEmployeeList() {
+    this.service.getEmpList().subscribe((data: any) => {
+      this.EmployeeList = data;
+
+      this.EmployeeName = this.task.EmployeeName;
+      this.EmployeeId = this.task.EmployeeId;
       this.DateOfJoining = this.task.DateOfJoining;
       this.Tasks = this.task.Tasks;
     });

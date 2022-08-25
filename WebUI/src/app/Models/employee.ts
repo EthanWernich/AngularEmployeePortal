@@ -1,5 +1,6 @@
 export interface IEmployee {
   id: number;
-  employeeName: string;
-  department: string;
+  EmployeeId: number;
+  EmployeeName: string;
+  Department: string;
 }
