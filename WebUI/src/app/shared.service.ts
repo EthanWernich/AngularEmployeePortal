@@ -52,14 +52,14 @@ export class SharedService {
   getTasksList(): Observable<ITasks[]> {
     return this.http.get<ITasks[]>(this.APIUrl + '/EmployeeTasks');
   }
-  addTasks(val: any) {
+  addTasks(val: any, EmployeeId: number) {
     return this.http.post(
-      this.APIUrl + `/EmployeeTasks/${val.EmployeeId}`,
+      this.APIUrl + `/EmployeeTasks/Employee/${EmployeeId}`,
       val
     );
   }
-  updateTasks(val: any, EmployeeId: number) {
-    return this.http.put(this.APIUrl + `/Department/${EmployeeId}`, val);
+  updateTasks(val: any, Id: number) {
+    return this.http.put(this.APIUrl + `/Department/${Id}`, val);
   }
 
   deleteTasks(val: any) {

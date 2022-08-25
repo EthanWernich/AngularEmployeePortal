@@ -21,7 +21,7 @@ export class ShowTasksComponent implements OnInit {
 
   addClick() {
     this.task = {
-      EmployeeId: 0,
+      Id: 0,
       EmployeeName: '',
       Department: '',
       Tasks: '',

@@ -2,9 +2,9 @@
   <div class="form-froup row" style="width: 60%">
     <label class="col-sm-2 col-form-label">Employee</label>
     <div class="col-sm-10">
-      <select class="form-control" [(ngModel)]="EmployeeName">
+      <select class="form-control" [(ngModel)]="selectedEmployee">
         <option>--Select--</option>
-        <option *ngFor="let empName of TasksList">
+        <option [ngValue]="empName" *ngFor="let empName of EmployeeList">
           {{ empName.EmployeeName }}
         </option>
       </select>
@@ -15,7 +15,7 @@
       <input
         type="text"
         class="form-control"
-        [(ngModel)]="Tasks"
+        [(ngModel)]="Description"
         placeholder="Enter Employee Task"
       />
     </div>
@@ -76,18 +76,6 @@
   </div>
 </div>
 
-<button
-  (click)="addTasks()"
-  *ngIf="!task.Id || task.Id == 0"
-  class="btn btn-primary"
->
-  Add
-</button>
+<button (click)="addTasks()" class="btn btn-primary">Add</button>
 
-<button
-  (click)="updateTasks()"
-  *ngIf="task.Id && task.Id != 0"
-  class="btn btn-primary"
->
-  Update
-</button>
+<button (click)="updateTasks()" class="btn btn-primary">Update</button>
