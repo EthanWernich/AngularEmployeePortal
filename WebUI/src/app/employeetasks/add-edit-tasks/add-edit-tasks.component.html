@@ -4,8 +4,8 @@
     <div class="col-sm-10">
       <select class="form-control" [(ngModel)]="EmployeeName">
         <option>--Select--</option>
-        <option *ngFor="let empName of EmployeeList">
-          {{ empName.EmployeeList }}
+        <option *ngFor="let empName of TasksList">
+          {{ empName.EmployeeName }}
         </option>
       </select>
     </div>

@@ -17,11 +17,11 @@ export class AddEditTasksComponent implements OnInit {
   Tasks: string;
 
   DepartmentList: any = [];
-  EmployeeList: any = [];
+  TasksList: any = [];
 
   ngOnInit(): void {
     this.loadDepartmentList();
-    this.loadEmployeeList();
+    this.loadTasksList();
   }
 
   loadDepartmentList() {
@@ -32,9 +32,9 @@ export class AddEditTasksComponent implements OnInit {
       this.Department = this.task.Department;
     });
   }
-  loadEmployeeList() {
+  loadTasksList() {
     this.service.getEmpList().subscribe((data: any) => {
-      this.EmployeeList = data;
+      this.TasksList = data;
 
       this.EmployeeName = this.task.EmployeeName;
       this.EmployeeId = this.task.EmployeeId;
