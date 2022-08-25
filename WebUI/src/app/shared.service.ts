@@ -53,10 +53,13 @@ export class SharedService {
     return this.http.get<ITasks[]>(this.APIUrl + '/EmployeeTasks');
   }
   addTasks(val: any) {
-    return this.http.post(this.APIUrl + '/EmployeeTasks', val);
+    return this.http.post(
+      this.APIUrl + `/EmployeeTasks/${val.EmployeeId}`,
+      val
+    );
   }
-  updateTasks(val: any, DepartmentId: number) {
-    return this.http.put(this.APIUrl + `/Department/${DepartmentId}`, val);
+  updateTasks(val: any, EmployeeId: number) {
+    return this.http.put(this.APIUrl + `/Department/${EmployeeId}`, val);
   }
 
   deleteTasks(val: any) {

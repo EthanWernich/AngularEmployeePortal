@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebAPI_4.Controllers
 {
-    [Route("api/employeeTasks")]
+    [Route("api/EmployeeTasks")]
     [ApiController]
 
     public class EmployeeTasksController : ControllerBase
@@ -37,7 +37,7 @@ namespace WebAPI_4.Controllers
         }
 
 
-        
+
         /// <summary>
         /// Get all employeetasks by employeeId.
         /// </summary>
@@ -54,7 +54,7 @@ namespace WebAPI_4.Controllers
             }
 
             return Tasks;
-            
+
         }
         /// <summary>
         /// Update employeeTasks by employeeId.

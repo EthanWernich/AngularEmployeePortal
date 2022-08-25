@@ -32,7 +32,7 @@ namespace WebAPI_4
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-            
+
             });
 
             //JSON Serializer
@@ -45,7 +45,8 @@ namespace WebAPI_4
 
                 );
 
-            services.AddDbContext<DataContext>(options => {
+            services.AddDbContext<DataContext>(options =>
+            {
                 options.UseSqlServer("Data Source=DESKTOP-C7PBSRR\\SQLEXPRESS;Initial Catalog= EmployeeDB; Integrated Security=true");
             });
 
@@ -79,7 +80,7 @@ namespace WebAPI_4
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = provider,
-                RequestPath= "/Photo"
+                RequestPath = "/Photo"
 
             });
         }

@@ -11,6 +11,7 @@ export class AddEditTasksComponent implements OnInit {
 
   @Input() task: any;
   EmployeeName: string;
+  EmployeeId: number;
   Department: string;
   DateOfJoining: string;
   Tasks: string;
@@ -26,7 +27,7 @@ export class AddEditTasksComponent implements OnInit {
       this.DepartmentList = data;
 
       this.EmployeeName = this.task.EmployeeName;
-      this.Department = this.task.Department;
+      this.EmployeeId = this.task.Department;
       this.DateOfJoining = this.task.DateOfJoining;
       this.Tasks = this.task.Tasks;
     });
@@ -35,6 +36,7 @@ export class AddEditTasksComponent implements OnInit {
   addTasks() {
     var val = {
       Id: this.task.Id,
+      EmployeeId: this.EmployeeId,
       EmployeeName: this.EmployeeName,
       Department: this.Department,
       DateOfJoining: this.DateOfJoining,
