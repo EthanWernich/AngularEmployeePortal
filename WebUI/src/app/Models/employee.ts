@@ -3,4 +3,7 @@ export interface IEmployee {
   // EmployeeId: number;
   EmployeeName: string;
   Department: string;
+  startTime: Date;
+  endTime: Date;
+  completedOn: Date;
 }

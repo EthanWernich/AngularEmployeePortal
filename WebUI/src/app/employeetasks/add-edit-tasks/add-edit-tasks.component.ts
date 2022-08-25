@@ -12,19 +12,20 @@ export class AddEditTasksComponent implements OnInit {
 
   public selectedEmployee = <IEmployee>{};
 
-  // @Input() task: any;
   EmployeeName: string;
   Id: number;
   EmployeeId: number;
   Department: string;
   DateOfJoining: string;
   Description: string;
+  StartTime: Date;
+  EndTime: Date;
+  CompletedOn: Date;
 
   DepartmentList: any = [];
   EmployeeList: IEmployee[] = [];
 
   ngOnInit(): void {
-    // this.loadDepartmentList();
     this.loadEmployeeList();
   }
 
@@ -49,19 +50,14 @@ export class AddEditTasksComponent implements OnInit {
   }
 
   addTasks() {
-    // this.tasks = {
-    //   id: this.selectedEmployee.Id,
-
-    // EmployeeId: this.EmployeeId,
-    // EmployeeName: this.EmployeeName,
-    // Department: this.Department,
-    // Tasks: this.Tasks,
-    // };
     var taskObject = {
       employeeId: this.selectedEmployee.Id,
       employeeName: this.selectedEmployee.EmployeeName,
       department: this.selectedEmployee.Department,
       tasks: this.Description,
+      startTime: this.selectedEmployee.startTime,
+      endTime: this.selectedEmployee.endTime,
+      completedOn: this.selectedEmployee.completedOn,
     } as ITasks;
 
     this.service

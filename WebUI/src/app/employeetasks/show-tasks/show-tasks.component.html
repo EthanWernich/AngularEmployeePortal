@@ -54,18 +54,18 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let dataItem of TasksList">
-      <td>{{ dataItem.EmployeeId }}</td>
-      <td>{{ dataItem.EmployeeName }}</td>
-      <td>{{ dataItem.Department }}</td>
-      <td>{{ dataItem.Tasks }}</td>
+    <tr *ngFor="let task of TasksList">
+      <td>{{ task.EmployeeId }}</td>
+      <td>{{ task.EmployeeName }}</td>
+      <td>{{ task.Department }}</td>
+      <td>{{ task.Tasks }}</td>
       <td>
         <button
           type="button"
           class="btn btn-light mr-1"
           data-toggle="modal"
           data-target="#exampleModal"
-          (click)="editClick(dataItem)"
+          (click)="editClick(task)"
           data-backdrop="static"
           data-keyboard="false"
         >
@@ -89,7 +89,7 @@
         <button
           type="button"
           class="btn btn-light mr-1"
-          (click)="deleteClick(dataItem)"
+          (click)="deleteClick(task)"
         >
           <svg
             width="1em"
