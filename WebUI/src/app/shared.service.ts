@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { IEmployee } from './Models';
+import { IDepartment } from './Models';
+import { ITasks } from './Models';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +14,8 @@ export class SharedService {
 
   constructor(private http: HttpClient) {}
 
-  getDepList(): Observable<any[]> {
-    return this.http.get<any>(this.APIUrl + '/department');
+  getDepList(): Observable<IDepartment[]> {
+    return this.http.get<IDepartment[]>(this.APIUrl + '/department');
   }
 
   addDepartment(val: any) {
@@ -27,8 +30,8 @@ export class SharedService {
     return this.http.delete(this.APIUrl + '/Department/' + val);
   }
 
-  getEmpList(): Observable<any[]> {
-    return this.http.get<any>(this.APIUrl + '/Employee');
+  getEmpList(): Observable<IEmployee[]> {
+    return this.http.get<IEmployee[]>(this.APIUrl + '/Employee');
   }
 
   addEmployee(val: any) {
@@ -45,5 +48,18 @@ export class SharedService {
 
   UploadPhoto(val: any) {
     return this.http.post(this.APIUrl + '/Employee/uploadedFile', val);
+  }
+  getTasksList(): Observable<ITasks[]> {
+    return this.http.get<ITasks[]>(this.APIUrl + '/EmployeeTasks');
+  }
+  addTasks(val: any) {
+    return this.http.post(this.APIUrl + '/EmployeeTasks', val);
+  }
+  updateTasks(val: any, DepartmentId: number) {
+    return this.http.put(this.APIUrl + `/Department/${DepartmentId}`, val);
+  }
+
+  deleteTasks(val: any) {
+    return this.http.delete(this.APIUrl + '/EmployeeTasks/' + val);
   }
 }

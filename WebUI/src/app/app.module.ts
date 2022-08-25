@@ -13,6 +13,9 @@ import { SharedService } from './shared.service';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { EmployeetasksComponent } from './employeetasks/employeetasks.component';
+import { AddEditTasksComponent } from './employeetasks/add-edit-tasks/add-edit-tasks.component';
+import { ShowTasksComponent } from './employeetasks/show-tasks/show-tasks.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
     AddEditComponent,
     EmployeeComponent,
     ShowEmpComponent,
-    AddEditEmpComponent
+    AddEditEmpComponent,
+    EmployeetasksComponent,
+    AddEditTasksComponent,
+    ShowTasksComponent
   ],
   imports: [
     BrowserModule,
