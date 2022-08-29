@@ -81,7 +81,14 @@ namespace WebAPI_4.Controllers
         public async Task<ActionResult<Employee>> Post(Employee Employees)
         {
             _context.Employees.Add(Employees);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception err)
+            {
+                var t = 5;
+            }
             return Ok(Employees);
         }
 
