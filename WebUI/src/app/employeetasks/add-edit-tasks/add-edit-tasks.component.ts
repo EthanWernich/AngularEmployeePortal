@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IEmployee, ITasks } from 'src/app/Models';
 import { SharedService } from 'src/app/shared.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-edit-tasks',
