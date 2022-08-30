@@ -33,25 +33,30 @@ namespace WebAPI_4.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EmployeeTasks>>> GetTasks()
         {
-            return await _context.Tasks.ToListAsync();
+            var query = from task in _context.Tasks
+                        .Include(e => e.Employee)
+                        select task;
+
+            var tasks =  await query.ToListAsync();
+            return tasks;
         }
 
         /// <summary>
-        /// Get all employeetasks by employeeId.
+        /// Get employeetask by taskId.
         /// </summary>
-        /// <param name="employeeId"></param>
+        /// <param name="taskId"></param>
         /// <returns></returns>
         [HttpGet("{Id}")]
-        public async Task<ActionResult<EmployeeTasks>> GetTaskByEmployeeId(int Id)
+        public async Task<ActionResult<EmployeeTasks>> GetTaskByTaskId(int taskId)
         {
-            var Tasks = await _context.Tasks.FindAsync(Id);
+            var Task = await _context.Tasks.FindAsync(taskId);
 
-            if (Tasks == null)
+            if (Task == null)
             {
                 return NotFound();
             }
 
-            return Tasks;
+            return Task;
 
         }
 
@@ -95,7 +100,7 @@ namespace WebAPI_4.Controllers
         }
 
         /// <summary>
-        /// Edit employeetasks by employeeId
+        /// Add employeetasks by employeeId
         /// </summary>
         /// <param name="tasks"></param>
         /// <returns></returns>

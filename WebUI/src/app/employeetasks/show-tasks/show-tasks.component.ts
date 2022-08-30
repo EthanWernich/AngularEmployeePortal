@@ -39,7 +39,7 @@ export class ShowTasksComponent implements OnInit {
 
   deleteClick(task: any) {
     if (confirm('Are you sure??')) {
-      this.service.deleteEmployee(task.Id).subscribe((data) => {
+      this.service.deleteTasks(task.Id).subscribe((data) => {
         alert(data.toString());
         this.refreshTasksList();
       });

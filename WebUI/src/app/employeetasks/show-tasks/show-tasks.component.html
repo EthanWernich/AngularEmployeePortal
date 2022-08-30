@@ -36,7 +36,7 @@
       </div>
 
       <div class="modal-body">
-        <app-add-edit-tasks *ngIf="ActivateAddEditTaskComp">
+        <app-add-edit-tasks [task]="task" *ngIf="ActivateAddEditTaskComp">
         </app-add-edit-tasks>
       </div>
     </div>
@@ -51,15 +51,15 @@
       <th>EmployeeId</th>
       <th>EmployeeName</th>
       <th>Department</th>
-      <th>Tasks</th>
+      <th>Description</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let task of TasksList">
       <td>{{ task.EmployeeId }}</td>
-      <td>{{ task.EmployeeName }}</td>
-      <td>{{ task.Department }}</td>
-      <td>{{ task.Tasks }}</td>
+      <td>{{ task.Employee.EmployeeName }}</td>
+      <td>{{ task.Employee.Department }}</td>
+      <td>{{ task.Description }}</td>
       <td>
         <button
           type="button"

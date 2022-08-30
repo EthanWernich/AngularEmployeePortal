@@ -2,9 +2,14 @@
   <div class="form-froup row" style="width: 60%">
     <label class="col-sm-2 col-form-label">Employee</label>
     <div class="col-sm-10">
-      <select class="form-control" [(ngModel)]="selectedEmployee">
-        <option>--Select--</option>
-        <option [ngValue]="empName" *ngFor="let empName of EmployeeList">
+      <select
+        class="form-control"
+        id="employee"
+        name="employee"
+        [(ngModel)]="selectedEmployee"
+      >
+        <option [ngValue]="undefined" selected="true">--Select--</option>
+        <option *ngFor="let empName of EmployeeList" [ngValue]="empName">
           {{ empName.EmployeeName }}
         </option>
       </select>
@@ -29,6 +34,7 @@
         min="09:00"
         max="18:00"
         required
+        [(ngModel)]="StartTime"
       />
     </div>
 
@@ -41,6 +47,7 @@
         min="09:00"
         max="18:00"
         required
+        [(ngModel)]="EndTime"
       />
     </div>
 
@@ -56,7 +63,7 @@
 
     <label class="col-sm-2 col-form-label">Completed On</label>
     <div class="col-sm-10">
-      <input type="date" [(ngModel)]="DateOfJoining" />
+      <input type="date" [(ngModel)]="CompletedOn" />
     </div>
 
     <!-- <label class="col-sm-2 col-form-label">Tasks</label>
@@ -76,6 +83,14 @@
   </div>
 </div>
 
-<button (click)="addTasks()" class="btn btn-primary">Add</button>
+<button
+  *ngIf="!task.Id || task.Id == 0"
+  (click)="addTasks()"
+  class="btn btn-primary"
+>
+  Add
+</button>
 
-<button (click)="updateTasks()" class="btn btn-primary">Update</button>
+<button *ngIf="task.Id" (click)="updateTasks()" class="btn btn-primary">
+  Update
+</button>

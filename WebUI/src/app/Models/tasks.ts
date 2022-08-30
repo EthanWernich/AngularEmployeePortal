@@ -1,10 +1,11 @@
+import { IEmployee } from './employee';
+
 export interface ITasks {
-  id: number;
-  employeeId: number;
-  employeeName: string;
-  department: string;
-  tasks: string;
-  startTime: Date;
-  endTime: Date;
-  completedOn: Date;
+  Id: number;
+  EmployeeId: number;
+  Description: string;
+  StartTime: Date;
+  EndTime: Date;
+  CompletedOn: Date;
+  Employee: IEmployee;
 }

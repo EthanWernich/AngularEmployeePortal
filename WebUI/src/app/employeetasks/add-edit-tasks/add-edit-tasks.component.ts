@@ -10,13 +10,14 @@ import { SharedService } from 'src/app/shared.service';
 export class AddEditTasksComponent implements OnInit {
   constructor(private service: SharedService) {}
 
+  @Input() task: ITasks;
+
   public selectedEmployee = <IEmployee>{};
 
   EmployeeName: string;
   Id: number;
   EmployeeId: number;
   Department: string;
-  DateOfJoining: string;
   Description: string;
   StartTime: Date;
   EndTime: Date;
@@ -28,6 +29,10 @@ export class AddEditTasksComponent implements OnInit {
   ngOnInit(): void {
     this.loadEmployeeList();
   }
+
+  // loadData() {
+
+  // }
 
   // loadDepartmentList() {
   //   this.service.getDepList().subscribe((data: any) => {
@@ -41,23 +46,21 @@ export class AddEditTasksComponent implements OnInit {
   loadEmployeeList() {
     this.service.getEmpList().subscribe((data: IEmployee[]) => {
       this.EmployeeList = data;
-      // this.EmployeeName = this.task.EmployeeName;
-      // this.Id = this.task.Id;
-      // this.DateOfJoining = this.task.DateOfJoining;
-      // this.Tasks = this.task.Tasks;
-      // this.EmployeeId = data.Id;
+      this.selectedEmployee = this.task.Employee;
+      this.Description = this.task.Description;
+      this.StartTime = this.task.StartTime;
+      this.EndTime = this.task.EndTime;
+      this.CompletedOn = this.task.CompletedOn;
     });
   }
 
   addTasks() {
     var taskObject = {
-      employeeId: this.selectedEmployee.Id,
-      employeeName: this.selectedEmployee.EmployeeName,
-      department: this.selectedEmployee.Department,
-      tasks: this.Description,
-      startTime: this.selectedEmployee.startTime,
-      endTime: this.selectedEmployee.endTime,
-      completedOn: this.selectedEmployee.completedOn,
+      EmployeeId: this.selectedEmployee.Id,
+      Description: this.Description,
+      StartTime: this.StartTime,
+      EndTime: this.EndTime,
+      CompletedOn: this.CompletedOn,
     } as ITasks;
 
     this.service
@@ -66,6 +69,7 @@ export class AddEditTasksComponent implements OnInit {
         alert(res.toString());
       });
   }
+
   updateTasks() {
     //   var val = {
     //     // Id: this.task.Id,
@@ -74,8 +78,8 @@ export class AddEditTasksComponent implements OnInit {
     //     DateOfJoining: this.DateOfJoining,
     //     Tasks: this.Description,
     //   };
-    //   this.service.updateTasks(val, this.task.Id).subscribe((res) => {
-    //     alert(res.toString());
-    //   });
+    // this.service.updateTasks(val, this.task.Id).subscribe((res) => {
+    //   alert(res.toString());
+    // });
   }
 }

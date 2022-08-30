@@ -49,17 +49,24 @@ export class SharedService {
   UploadPhoto(val: any) {
     return this.http.post(this.APIUrl + '/Employee/uploadedFile', val);
   }
+
   getTasksList(): Observable<ITasks[]> {
     return this.http.get<ITasks[]>(this.APIUrl + '/EmployeeTasks');
   }
+
+  getTaskById(taskId: number): Observable<ITasks> {
+    return this.http.get<ITasks>(this.APIUrl + `/EmployeeTasks/${taskId}`);
+  }
+
   addTasks(val: any, EmployeeId: number) {
     return this.http.post(
       this.APIUrl + `/EmployeeTasks/Employee/${EmployeeId}`,
       val
     );
   }
-  updateTasks(val: any, Id: number) {
-    return this.http.put(this.APIUrl + `/Department/${Id}`, val);
+
+  updateTasks(val: any, EmployeeId: number) {
+    return this.http.put(this.APIUrl + `/Employee/${EmployeeId}`, val);
   }
 
   deleteTasks(val: any) {
