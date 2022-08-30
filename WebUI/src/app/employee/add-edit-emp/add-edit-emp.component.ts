@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
-
 @Component({
   selector: 'app-add-edit-emp',
   templateUrl: './add-edit-emp.component.html',
@@ -12,7 +11,7 @@ export class AddEditEmpComponent implements OnInit {
   @Input() emp: any;
   EmployeeName: string;
   Department: string;
-  DateOfJoining: string;
+  DateOfJoining: Date;
   PhotoFileName: string;
   PhotoFilePath: string;
 
@@ -32,6 +31,10 @@ export class AddEditEmpComponent implements OnInit {
       this.PhotoFileName = this.emp.PhotoFileName;
       this.PhotoFilePath = this.service.PhotoUrl + this.PhotoFileName;
     });
+  }
+
+  updatedate(event: any) {
+    this.DateOfJoining = new Date(event);
   }
 
   addEmployee() {

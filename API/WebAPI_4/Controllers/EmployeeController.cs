@@ -26,13 +26,14 @@ namespace WebAPI_4.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> Get()
+        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
-            return await _context.Employees.ToListAsync();
+            var employeeList = await _context.Employees.ToListAsync();
+            return employeeList;
         }
 
         [HttpGet("{Id}")]
-        public async Task<ActionResult<Employee>> GetEmployees(int Id)
+        public async Task<ActionResult<Employee>> GetEmployeeById(int Id)
         {
             var employees = await _context.Employees.FindAsync(Id);
 
@@ -43,7 +44,7 @@ namespace WebAPI_4.Controllers
 
             return employees;
         }
-
+        //Update
         [HttpPut("{Id}")]
         public async Task<IActionResult> Put(int Id, Employee Employees)
         {
@@ -76,12 +77,19 @@ namespace WebAPI_4.Controllers
         {
             throw new NotImplementedException();
         }
-
+        //Add
         [HttpPost]
         public async Task<ActionResult<Employee>> Post(Employee Employees)
         {
             _context.Employees.Add(Employees);
-            await _context.SaveChangesAsync();          
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception err)
+            {
+                var t = 5;
+            }
             return Ok(Employees);
         }
 

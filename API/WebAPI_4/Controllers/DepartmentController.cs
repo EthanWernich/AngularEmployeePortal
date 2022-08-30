@@ -43,7 +43,7 @@ namespace WebAPI_4.Controllers
 
             return Departments;
         }
-
+        //Update
         [HttpPut("{DepartmentId}")]
         public async Task<IActionResult> Put(int DepartmentId, Department Departments)
         {
@@ -76,7 +76,7 @@ namespace WebAPI_4.Controllers
         {
             throw new NotImplementedException();
         }
-
+        //ADD
         [HttpPost]
         public async Task<ActionResult<Department>> Post(Department Departments)
         {

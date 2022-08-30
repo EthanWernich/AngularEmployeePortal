@@ -11,14 +11,15 @@ namespace WebAPI_4.Models
     public class EmployeeTasks
     {
         public int Id { get; set; }
-
         public int EmployeeId { get; set; }
+        public string Description { get; set; }
         public DateTime? StartTime { get; set; }
         public DateTime? EndTime { get; set; }
         public DateTime? CompletedOn { get; set; }
         public DateTime? CreatedOn { get; set; }
         public DateTime? ModifiedOn { get; set; }
 
+        public Employee Employee { get; set; }
 
     }
 }

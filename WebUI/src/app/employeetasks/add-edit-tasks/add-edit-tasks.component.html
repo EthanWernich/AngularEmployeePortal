@@ -1,0 +1,75 @@
+<div class="d-flex flex-row bd-highlight mb-3">
+  <div class="form-froup row" style="width: 60%">
+    <label class="col-sm-10 col-form-label">Employee</label>
+    <div class="col-sm-10">
+      <select
+        class="form-control"
+        id="employee"
+        name="employee"
+        [(ngModel)]="task.EmployeeId"
+      >
+        <option [ngValue]="undefined" selected="true">--Select--</option>
+        <option *ngFor="let emp of EmployeeList" [ngValue]="emp.Id">
+          {{ emp.EmployeeName }}
+        </option>
+      </select>
+    </div>
+
+    <label class="col-sm-10 col-form-label">Description</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="Description"
+        placeholder="Enter Employee Task"
+      />
+    </div>
+
+    <label class="col-sm-3 col-form-label">Start Time</label>
+    <div class="col-sm-10">
+      <input
+        type="time"
+        id="appt"
+        name="appt"
+        min="09:00"
+        max="18:00"
+        required
+        [(ngModel)]="StartTime"
+      />
+    </div>
+
+    <label class="col-sm-3 col-form-label">End Time</label>
+    <div class="col-sm-10">
+      <input
+        type="time"
+        id="appt"
+        name="appt"
+        min="09:00"
+        max="18:00"
+        required
+        [(ngModel)]="EndTime"
+      />
+    </div>
+
+    <label class="col-sm-3 col-form-label">Completed On</label>
+    <div class="col-sm-10">
+      <input type="date" [(ngModel)]="CompletedOn" />
+    </div>
+  </div>
+</div>
+
+<button
+  *ngIf="!task.Id || task.Id == 0"
+  (click)="addTasks()"
+  class="btn btn-primary"
+>
+  Add
+</button>
+
+<button
+  *ngIf="task.Id && task.Id != 0"
+  (click)="updateTasks()"
+  class="btn btn-primary"
+>
+  Update
+</button>
