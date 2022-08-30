@@ -66,7 +66,7 @@ namespace WebAPI_4.Controllers
         /// <param name="employeeId"></param>
         /// <param name="Tasks"></param>
         /// <returns></returns>
-        [HttpPut("{EmployeeId}")]
+        [HttpPut("Employee/{EmployeeId}")]
         public async Task<IActionResult> Put(int EmployeeId, EmployeeTasks Tasks)
         {
             if (EmployeeId != Tasks.EmployeeId)
@@ -102,14 +102,19 @@ namespace WebAPI_4.Controllers
         /// <summary>
         /// Add employeetasks by employeeId
         /// </summary>
-        /// <param name="tasks"></param>
+        /// <param name="task"></param>
         /// <returns></returns>
         [HttpPost("Employee/{EmployeeId}")]
-        public async Task<ActionResult<EmployeeTasks>> Post(EmployeeTasks tasks)
+        public async Task<ActionResult<EmployeeTasks>> Post(int EmployeeId, EmployeeTasks task)
         {
-            _context.Tasks.Add(tasks);
+            if (EmployeeId != task.EmployeeId)
+            {
+                return BadRequest();
+            }
+
+            _context.Tasks.Add(task);
             await _context.SaveChangesAsync();
-            return Ok(tasks);
+            return Ok(task);
         }
 
         [HttpDelete("{Id}")]

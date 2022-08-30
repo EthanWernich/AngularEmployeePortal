@@ -10,7 +10,7 @@ import { SharedService } from 'src/app/shared.service';
 export class AddEditTasksComponent implements OnInit {
   constructor(private service: SharedService) {}
 
-  @Input() task: ITasks;
+  @Input() task = <ITasks>{};
 
   public selectedEmployee = <IEmployee>{};
 
@@ -28,6 +28,13 @@ export class AddEditTasksComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadEmployeeList();
+
+    this.Id = this.task.Id;
+    this.selectedEmployee = this.task.Employee;
+    this.Description = this.task.Description;
+    this.StartTime = this.task.StartTime;
+    this.EndTime = this.task.EndTime;
+    this.CompletedOn = this.task.CompletedOn;
   }
 
   // loadData() {
@@ -46,16 +53,26 @@ export class AddEditTasksComponent implements OnInit {
   loadEmployeeList() {
     this.service.getEmpList().subscribe((data: IEmployee[]) => {
       this.EmployeeList = data;
-      this.selectedEmployee = this.task.Employee;
-      this.Description = this.task.Description;
-      this.StartTime = this.task.StartTime;
-      this.EndTime = this.task.EndTime;
-      this.CompletedOn = this.task.CompletedOn;
     });
   }
 
   addTasks() {
     var taskObject = {
+      EmployeeId: this.task.EmployeeId,
+      Description: this.Description,
+      StartTime: this.StartTime,
+      EndTime: this.EndTime,
+      CompletedOn: this.CompletedOn,
+    } as ITasks;
+
+    this.service.addTasks(taskObject, this.task.EmployeeId).subscribe((res) => {
+      alert(res.toString());
+    });
+  }
+
+  updateTasks() {
+    var taskObject = {
+      Id: this.Id,
       EmployeeId: this.selectedEmployee.Id,
       Description: this.Description,
       StartTime: this.StartTime,
@@ -64,22 +81,9 @@ export class AddEditTasksComponent implements OnInit {
     } as ITasks;
 
     this.service
-      .addTasks(taskObject, this.selectedEmployee.Id)
+      .updateTasks(taskObject, this.selectedEmployee.Id)
       .subscribe((res) => {
         alert(res.toString());
       });
-  }
-
-  updateTasks() {
-    //   var val = {
-    //     // Id: this.task.Id,
-    //     EmployeeName: this.EmployeeName,
-    //     Department: this.Department,
-    //     DateOfJoining: this.DateOfJoining,
-    //     Tasks: this.Description,
-    //   };
-    // this.service.updateTasks(val, this.task.Id).subscribe((res) => {
-    //   alert(res.toString());
-    // });
   }
 }

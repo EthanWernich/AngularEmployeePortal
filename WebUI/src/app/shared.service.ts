@@ -65,8 +65,9 @@ export class SharedService {
     );
   }
 
-  updateTasks(val: any, EmployeeId: number) {
-    return this.http.put(this.APIUrl + `/Employee/${EmployeeId}`, val);
+  updateTasks(val: any, employeeId: number) {
+    const url = this.APIUrl + `/EmployeeTasks/Employee/${employeeId}`;
+    return this.http.put(url, val);
   }
 
   deleteTasks(val: any) {
