@@ -37,7 +37,7 @@ namespace WebAPI_4.Controllers
                         .Include(e => e.Employee)
                         select task;
 
-            var tasks =  await query.ToListAsync();
+            var tasks = await query.ToListAsync();
             return tasks;
         }
 
@@ -74,13 +74,17 @@ namespace WebAPI_4.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(Tasks).State = EntityState.Modified;
+            var createdOn = await _context.Tasks.Where(t => t.Id == Tasks.Id).Select(t => t.CreatedOn).FirstOrDefaultAsync();
+
+            Tasks.CreatedOn = createdOn;
+            Tasks.ModifiedOn = DateTime.Now;
 
             try
             {
+                _context.Entry(Tasks).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception err)
             {
                 if (!EmployeeTaskExists(EmployeeId))
                 {
@@ -92,6 +96,7 @@ namespace WebAPI_4.Controllers
                 }
             }
             return Ok(Tasks);
+
         }
 
         private bool EmployeeTaskExists(int EmployeeId)
@@ -112,6 +117,7 @@ namespace WebAPI_4.Controllers
                 return BadRequest();
             }
 
+            task.CreatedOn = DateTime.Now;
             _context.Tasks.Add(task);
             await _context.SaveChangesAsync();
             return Ok(task);
