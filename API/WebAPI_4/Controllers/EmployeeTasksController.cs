@@ -1,14 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
 using WebAPI_4.Models;
-using Microsoft.AspNetCore.Hosting;
-using System.IO;
 using WebAPI_4.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -122,6 +118,11 @@ namespace WebAPI_4.Controllers
             await _context.SaveChangesAsync();
             return Ok(task);
         }
+        /// <summary>
+        /// Delete a employee task
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
 
         [HttpDelete("{Id}")]
         public async Task<IActionResult> Delete(int Id)

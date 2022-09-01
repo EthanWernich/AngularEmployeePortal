@@ -1,15 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Data;
 using WebAPI_4.Models;
-using Microsoft.AspNetCore.Hosting;
-using System.IO;
 using WebAPI_4.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,13 +19,22 @@ namespace WebAPI_4.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// Get a employee
+        /// </summary>
+        /// <returns></returns>
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
             var employeeList = await _context.Employees.ToListAsync();
             return employeeList;
         }
-
+        /// <summary>
+        /// Get a employee by EmployeeId
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpGet("{Id}")]
         public async Task<ActionResult<Employee>> GetEmployeeById(int Id)
         {
@@ -45,6 +48,12 @@ namespace WebAPI_4.Controllers
             return employees;
         }
         //Update
+        /// <summary>
+        /// Update a existing employee
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <param name="Employees"></param>
+        /// <returns></returns>
         [HttpPut("{Id}")]
         public async Task<IActionResult> Put(int Id, Employee Employees)
         {
@@ -78,6 +87,11 @@ namespace WebAPI_4.Controllers
             throw new NotImplementedException();
         }
         //Add
+        /// <summary>
+        /// Add a employee
+        /// </summary>
+        /// <param name="Employees"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Employee>> Post(Employee Employees)
         {
@@ -93,6 +107,11 @@ namespace WebAPI_4.Controllers
             return Ok(Employees);
         }
 
+        /// <summary>
+        /// Delete Employee by EmployeeId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
