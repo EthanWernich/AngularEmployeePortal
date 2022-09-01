@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Data;
-using WebAPI_4.Models;
 using WebAPI_4.Data;
-using Microsoft.EntityFrameworkCore;
+using WebAPI_4.Models;
 
 namespace WebAPI_4.Controllers
 {
