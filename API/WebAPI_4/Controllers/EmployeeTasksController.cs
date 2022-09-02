@@ -30,7 +30,7 @@ namespace WebAPI_4.Controllers
         public async Task<ActionResult<IEnumerable<EmployeeTasks>>> GetTasks()
         {
             var query = from task in _context.Tasks
-                        .Include(e => e.Employee)
+                        .Include(e => e.Employee) 
                         select task;
 
             var tasks = await query.ToListAsync();
@@ -80,7 +80,7 @@ namespace WebAPI_4.Controllers
                 _context.Entry(Tasks).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
-            catch (Exception err)
+            catch (Exception error)
             {
                 if (!EmployeeTaskExists(EmployeeId))
                 {
@@ -137,6 +137,5 @@ namespace WebAPI_4.Controllers
             await _context.SaveChangesAsync();
             return Ok(Tasks);
         }
-
     }
 }
